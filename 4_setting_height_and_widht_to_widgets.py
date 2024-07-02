@@ -10,28 +10,47 @@ from kivy.uix.button import Button
 class MyGridLayout(GridLayout):                         # there are several buttons layouts
     def __init__(self, **kwargs):                       # initialize infinite keywords
         super(MyGridLayout, self).__init__(**kwargs)    # calling the grid layout constructor
-        self.cols = 1                                  # setting number of columns
-        
-        self.top_grid = GridLayout() # creating a new widget with 2 columns that will hold only the texts and input boxes
+        self.cols = 1    # setting number of columns
+        self.row_force_default=True
+        self.row_default_height=160
+        self.col_force_default=True
+        self.col_default_width=200
+
+        # TEXT AND INPUT BOXES
+        self.top_grid = GridLayout(row_force_default=True, row_default_height=50, 
+                                   col_force_default=True, col_default_width=100) # creating a new widget with 2 columns that will hold only the texts and input boxes
         self.top_grid.cols = 2
 
+
+
+
+
+
         self.top_grid.add_widget(Label(text="Name: "))           # adding a widget with a visible text 'Name'
-        self.name = TextInput(multiline=True)           # creating a line for input that allows input on multiple lines
+        self.name = TextInput(multiline=True)                    # creating a line for input that allows input on multiple lines
         self.top_grid.add_widget(self.name)                      # adding a widget with a line for input
 
         self.top_grid.add_widget(Label(text="Age: "))            # adding a widget with a visible text 'Name'
-        self.age = TextInput(multiline=True)            # creating a line for input that allows input on multiple lines
+        self.age = TextInput(multiline=True)                     # creating a line for input that allows input on multiple lines
         self.top_grid.add_widget(self.age)                       # adding a widget with a line for input
 
         self.top_grid.add_widget(Label(text="Sex: "))            # adding a widget with a visible text 'Name'
-        self.sex = TextInput(multiline=True)            # creating a line for input that allows input on multiple lines
+        self.sex = TextInput(multiline=True)                     # creating a line for input that allows input on multiple lines
         self.top_grid.add_widget(self.sex)                       # adding a widget with a line for input
 
         self.add_widget(self.top_grid) # adding the 2 columns widget to the main window widget
 
 
 
-        self.submit = Button(text='Submit', font_size=32) # creating a button
+        # BUTTON - # creating a button
+        self.submit = Button(text='Submit', 
+                             font_size=32,
+                             size_hint_y = None, # we have to do this so it know if we want y or x in that size
+                             height=100,
+                             size_hint_x = None,
+                             width=200
+                             )
+         
         self.submit.bind(on_press=self.press)
         self.add_widget(self.submit)
     
