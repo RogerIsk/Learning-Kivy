@@ -1,42 +1,22 @@
-<MyGridLayout>
-
-    name:name
-    age:age
-    sex:sex
-
-    GridLayout:
-        cols:1
+<MyLayout>
+    BoxLayout:
+        orientation: "vertical"
         size: root.width, root.height
-        
-        GridLayout:
-            cols:2
 
-            Label:
-                text: "Name"
-            TextInput:
-                id: name
-                multiline: False
-            
-            Label:
-                text: "Age"
-            TextInput:
-                id: age
-                multiline: False
-            
-            Label:
-                text: "Sex"
-            TextInput:
-                id: sex
-                multiline: False
-                background_color: (1,0,1,1)
+        padding: 50     # creates space between the buttons alltogether and the edge of the window 
+        spacing: 20     # creates space between the buttons
 
 
         Button:
-            text: "Submit"
-            font_size: 32
+            text: "Hello World"
 
-            on_press: root.press()
-
-            #background_normal: ''
-            background_color: (1,1,0,1) #red, green, blue and transparency values 
-            
+        Button:
+            text: "Pause World"
+        
+        Button:
+            text: "Bye World"
+            pos_hint: {'center_x': 0.5}
+            size_hint: (0.5, 0.5)
+            #size_hint: (None, None)
+            #width: 200
+            #height: 50

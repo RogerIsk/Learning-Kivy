@@ -2,9 +2,11 @@ from kivy.app import App                # libraries and dependancies
 from kivy.uix.widget import Widget      # at first they were like 10+ but the deeper i went with the tutorials the less they got
 from kivy.properties import ObjectProperty
 from kivy.lang import Builder
+from kivy.core.window import Window
+from kivy.uix.image import Image
 
 
-Builder.load_file('box_layout.kv') #this loads all the styling settings from 'box_layout'
+Builder.load_file('images.kv') #this loads all the styling settings from 'box_layout'
 
 
 
@@ -15,6 +17,7 @@ class MyLayout(Widget):
 #the class that runs the window and shows the window title automatically, for some reason kivy ignores 'App'
 class AwesomeApp(App): 
     def build(self):
+        Window.clearcolor = (1, 1, 1, 1)
         return MyLayout()
     
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 
 
-Builder.load_file('box_layout.kv') #this loads all the styling settings from 'box_layout'
+Builder.load_file('background_color.kv') #this loads all the styling settings from 'box_layout'
 
 
 
