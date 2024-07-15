@@ -1,0 +1,27 @@
+<Button>
+    font_size: 32
+
+
+<MyLayout>
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Label:
+            id: my_label
+            text: "Enter your name"
+            font_size: 32
+
+        TextInput:
+            id: name_input
+            multiline: False
+            font_size: 32
+            size_hint_y: 0.5
+
+
+        Button:
+            on_press: root.press() #when pressed, call the press function
+            text: "Submit"
+            size_hint_y: 0.5
+            
