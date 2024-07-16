@@ -1,27 +1,155 @@
 <Button>
     font_size: 32
-
+    size_hint: (0.25,0.16)
 
 <MyLayout>
 
-    BoxLayout:
+    FloatLayout:
         size: root.width, root.height
         orientation: "vertical"
 
-        Label:
-            id: my_label
-            text: "Enter your name"
-            font_size: 32
-
         TextInput:
-            id: name_input
+            id: calc_input
+            text: "0"
+            halign: "right"
             multiline: False
-            font_size: 32
-            size_hint_y: 0.5
-
+            font_size: 90
+            pos_hint: {"x":0, "top": 1}
+            size_hint: (1,0.20)
 
         Button:
-            on_press: root.press() #when pressed, call the press function
-            text: "Submit"
-            size_hint_y: 0.5
+            id: input_one
+            on_press: root.press_one()
+            text: "1"
+            pos_hint: {"x":0, "top":0.32}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_two
+            on_press: root.press_two()
+            text: "2"
+            pos_hint: {"x":0.25, "top":0.32}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_three
+            on_press: root.press_three()
+            text: "3"
+            pos_hint: {"x":0.5, "top":0.32}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_four
+            on_press: root.press()
+            text: "4"
+            pos_hint: {"x":0, "top":0.48}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_five
+            on_press: root.press()
+            text: "5"
+            pos_hint: {"x":0.25, "top":0.48}
+            background_color: (0.5, 0.5, 0.5, 1)
+
+        Button:
+            id: input_six
+            on_press: root.press()
+            text: "6"
+            pos_hint: {"x":0.5, "top":0.48}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_seven
+            on_press: root.press()
+            text: "7"
+            pos_hint: {"x":0, "top":0.64}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_eight
+            on_press: root.press()
+            text: "8"
+            pos_hint: {"x":0.25, "top":0.64}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_nine
+            on_press: root.press()
+            text: "9"
+            pos_hint: {"x":0.5, "top":0.64}
+            background_color: (0.5, 0.5, 0.5, 1)
+        
+        Button:
+            id: input_zero
+            on_press: root.press()
+            text: "0"
+            pos_hint: {"x":0.25, "top":0.16}
+            background_color: (0.5, 0.5, 0.5, 1)
+        
+        
+        
+        
+        Button:
+            id: input_procentage
+            on_press: root.press()
+            text: "%"
+            pos_hint: {"x":0, "top":0.80}
+
+        Button:
+            id: input_clear_idk
+            on_press: root.press()
+            text: "CE"
+            pos_hint: {"x":0.25, "top":0.80}
+            
+        Button:
+            id: clear
+            on_press: root.clear()
+            text: "C"
+            pos_hint: {"x":0.5, "top":0.80}
+            
+        Button:
+            id: input_divide
+            on_press: root.press()
+            text: "/"
+            pos_hint: {"x":0.75, "top":0.80}
+            
+        Button:
+            id: input_multiply
+            on_press: root.press()
+            text: "*"
+            pos_hint: {"x":0.75, "top":0.64}
+            
+        Button:
+            id: input_minus
+            on_press: root.press()
+            text: "-"
+            pos_hint: {"x":0.75, "top":0.48}
+
+        Button:
+            id: input_plus
+            on_press: root.press()
+            text: "+"
+            pos_hint: {"x":0.75, "top":0.32}
+
+        Button:
+            id: input_equals
+            on_press: root.press()
+            text: "="
+            pos_hint: {"x":0.75, "top":0.16}
+            
+        Button:
+            id: input_dot
+            on_press: root.press()
+            text: "."
+            pos_hint: {"x":0.5, "top":0.16}
+            background_color: (0.5, 0.5, 0.5, 1)
+            
+        Button:
+            id: input_plus_minus
+            on_press: root.press()
+            text: "+/-"
+            pos_hint: {"x":0, "top":0.16}
+            background_color: (0.5, 0.5, 0.5, 1)
+        
             
