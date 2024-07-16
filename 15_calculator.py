@@ -14,36 +14,48 @@ class MyLayout(Widget):
     def clear(self):
         self.ids.calc_input.text = '0'
 
-    def press_one(self):
-        self.ids.calc_input.text.text = '1'
+    def press_button(self, button):
+        prior = self.ids.calc_input.text
 
-    def press_two(self):
-        self.ids.calc_input.text = '2'
+        if prior == '0':
+            self.ids.calc_input.text = ''
+            self.ids.calc_input.text = f'{button}'
+        else:
+            self.ids.calc_input.text = f'{prior}{button}'
 
-    def press_three(self):
-        self.ids.calc_input.text = '3'
+    def add_button(self):
+        prior = self.ids.calc_input.text
+        self.ids.calc_input.text = f"{prior}+"
 
-    def press_four(self):
-        self.ids.calc_input.text = '4'
+    def subtract_button(self):
+        prior = self.ids.calc_input.text
+        self.ids.calc_input.text = f"{prior}-"
 
-    def press_five(self):
-        self.ids.calc_input.text = '5'
-
-    def press_six(self):
-        self.ids.calc_input.text = '6'
-
-    def press_seven(self):
-        self.ids.calc_input.text = '7'
-
-    def press_eight(self):
-        self.ids.calc_input.text = '8'
-
-    def press_nine(self):
-        self.ids.calc_input.text = '9'
-
-    def press_zero(self):
-        self.ids.calc_input.text = '0'
+    def multiply_button(self):
+        prior = self.ids.calc_input.text
+        self.ids.calc_input.text = f"{prior}*"
     
+    def divide_button(self):
+        prior = self.ids.calc_input.text
+        self.ids.calc_input.text = f"{prior}/"
+
+    def equals_button(self):
+        prior = self.ids.calc_input.text
+        if "+" in prior:   
+            num_list = prior.split('+')
+            answer = 0
+
+            for num in num_list:
+                answer = answer + int(num)
+            self.ids.calc_input.text = str(answer)
+
+        elif "-" in prior:
+            num_list = prior.split('-')
+            answer = 0
+
+            for num in num_list:
+                answer = answer - int(num)
+            self.ids.calc_input.text = str(answer) 
 
 #the class that runs the window and shows the window title automatically, for some reason kivy ignores 'App'
 class Basic_CalculatorApp(App): 
