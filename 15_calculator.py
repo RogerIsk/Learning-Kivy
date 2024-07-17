@@ -23,21 +23,40 @@ class MyLayout(Widget):
         else:
             self.ids.calc_input.text = f'{prior}{button}'
 
-    def add_button(self):
-        prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f"{prior}+"
 
-    def subtract_button(self):
+    def math_sign(self, sign):
         prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f"{prior}-"
+        self.ids.calc_input.text = f"{prior}{sign}"
 
-    def multiply_button(self):
+    def delete_button(self):
         prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f"{prior}*"
-    
-    def divide_button(self):
+        prior = prior[:-1]
+        self.ids.calc_input.text = prior
+
+    def pos_neg(self):
         prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f"{prior}/"
+        if "-" in prior:
+            self.ids.calc_input.text = prior.replace("-", "")
+        else:
+            self.ids.calc_input.text = f'-{prior}'
+
+    def dot_button(self):
+        prior = self.ids.calc_input.text
+        num_list = prior.split('+')
+
+        if "+" in prior and "." in num_list[-1]:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+
+        elif "." in prior:
+            pass
+        else:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+
+
+
+
 
     def equals_button(self):
         prior = self.ids.calc_input.text
@@ -46,7 +65,7 @@ class MyLayout(Widget):
             answer = 0
 
             for num in num_list:
-                answer = answer + int(num)
+                answer = answer + float(num)
             self.ids.calc_input.text = str(answer)
 
         elif "-" in prior:
@@ -54,7 +73,23 @@ class MyLayout(Widget):
             answer = 0
 
             for num in num_list:
-                answer = answer - int(num)
+                answer = answer - float(num)
+            self.ids.calc_input.text = str(answer) 
+        
+        elif "*" in prior:
+            num_list = prior.split('*')
+            answer = 0
+        
+            for num in num_list:
+                answer = answer * float(num)
+            self.ids.calc_input.text = str(answer) 
+        
+        elif "-" in prior:
+            num_list = prior.split('/')
+            answer = 0
+        
+            for num in num_list:
+                answer = answer / float(num)
             self.ids.calc_input.text = str(answer) 
 
 #the class that runs the window and shows the window title automatically, for some reason kivy ignores 'App'

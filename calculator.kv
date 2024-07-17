@@ -97,37 +97,37 @@
             pos_hint: {"x":0, "top":0.80}
 
         Button:
-            id: input_clear_idk
-            text: "CE"
-            pos_hint: {"x":0.25, "top":0.80}
+            text: u"\u00AB"
+            pos_hint: {"x":0.5, "top":0.80}
+            on_press: root.delete_button()
             
         Button:
             id: clear
             on_press: root.clear()
             text: "C"
-            pos_hint: {"x":0.5, "top":0.80}
+            pos_hint: {"x":0.25, "top":0.80}
             
         Button:
             id: input_divide
             text: "/"
             pos_hint: {"x":0.75, "top":0.80}
-            on_press: root.divide_button()
+            on_press: root.math_sign("/")
             
         Button:
             id: input_multiply
             text: "*"
             pos_hint: {"x":0.75, "top":0.64}
-            on_press: root.multiply_button()
+            on_press: root.math_sign("*")
 
         Button:
             id: input_minus
             text: "-"
             pos_hint: {"x":0.75, "top":0.48}
-            on_press: root.subtract_button()
+            on_press: root.math_sign("-")
 
         Button:
             id: input_plus
-            on_press: root.add_button()
+            on_press: root.math_sign("+")
             text: "+"
             pos_hint: {"x":0.75, "top":0.32}
 
@@ -142,11 +142,13 @@
             text: "."
             pos_hint: {"x":0.5, "top":0.16}
             background_color: (0.5, 0.5, 0.5, 1)
+            on_press: root.dot_button()
             
         Button:
             id: input_plus_minus
             text: "+/-"
             pos_hint: {"x":0, "top":0.16}
             background_color: (0.5, 0.5, 0.5, 1)
+            on_press: root.pos_neg()
         
             
