@@ -17,6 +17,9 @@ class MyLayout(Widget):
     def press_button(self, button):
         prior = self.ids.calc_input.text
 
+        if "Error" in prior:
+            prior = ''
+
         if prior == '0':
             self.ids.calc_input.text = ''
             self.ids.calc_input.text = f'{button}'
@@ -40,14 +43,47 @@ class MyLayout(Widget):
         else:
             self.ids.calc_input.text = f'-{prior}'
 
+    def procenate_button(self):
+            prior = self.ids.calc_input.text
+            self.ids.calc_input.text = f'({prior})'
+
     def dot_button(self):
         prior = self.ids.calc_input.text
         num_list = prior.split('+')
 
-        if "+" in prior and "." in num_list[-1]:
+        if "+" in prior and "." not in num_list[-1]:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+        elif "." in prior:
+            pass
+        else:
             prior = f'{prior}.'
             self.ids.calc_input.text = prior
 
+        num_list = prior.split('-')
+        if "-" in prior and "." not in num_list[-1]:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+        elif "." in prior:
+            pass
+        else:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+
+        num_list = prior.split('*')
+        if "*" in prior and "." not in num_list[-1]:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+        elif "." in prior:
+            pass
+        else:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
+
+        num_list = prior.split('/')
+        if "/" in prior and "." not in num_list[-1]:
+            prior = f'{prior}.'
+            self.ids.calc_input.text = prior
         elif "." in prior:
             pass
         else:
@@ -56,41 +92,14 @@ class MyLayout(Widget):
 
 
 
-
-
     def equals_button(self):
         prior = self.ids.calc_input.text
-        if "+" in prior:   
-            num_list = prior.split('+')
-            answer = 0
-
-            for num in num_list:
-                answer = answer + float(num)
+        try:
+            answer = eval(prior)
             self.ids.calc_input.text = str(answer)
+        except:
+            self.ids.calc_input.text = 'Error'
 
-        elif "-" in prior:
-            num_list = prior.split('-')
-            answer = 0
-
-            for num in num_list:
-                answer = answer - float(num)
-            self.ids.calc_input.text = str(answer) 
-        
-        elif "*" in prior:
-            num_list = prior.split('*')
-            answer = 0
-        
-            for num in num_list:
-                answer = answer * float(num)
-            self.ids.calc_input.text = str(answer) 
-        
-        elif "-" in prior:
-            num_list = prior.split('/')
-            answer = 0
-        
-            for num in num_list:
-                answer = answer / float(num)
-            self.ids.calc_input.text = str(answer) 
 
 #the class that runs the window and shows the window title automatically, for some reason kivy ignores 'App'
 class Basic_CalculatorApp(App): 
